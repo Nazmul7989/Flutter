@@ -27,19 +27,30 @@ class MyApp extends StatelessWidget{
 class HomePage extends StatelessWidget{
   const HomePage({super.key});
 
+  MySnackBar(message,context){
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message))
+    );
+
+  }
+
   @override
   Widget build(BuildContext context) {
    return Scaffold(
      appBar: AppBar(
        title: Text('My App'),
-       titleSpacing: 0,
+       titleSpacing: 10,
        // titleTextStyle: ,
-       centerTitle: true,
+       // centerTitle: true,
        elevation: 0,
        backgroundColor: Colors.teal,
        toolbarHeight: 60.0,
        toolbarOpacity: 1,
        // toolbarTextStyle: ,
+       actions: [
+         IconButton(onPressed: (){MySnackBar('I am search', context);}, icon: Icon(Icons.search)),
+         IconButton(onPressed: (){MySnackBar('I am notificaions', context);}, icon: Icon(Icons.notifications)),
+       ],
 
      ),
      body: Text('This is my first App'),
